@@ -1,4 +1,4 @@
-﻿using QuickBuy.Dominio.Enumerator;
+﻿using QuickBuy.Dominio.Constantes;
 
 namespace QuickBuy.Dominio.ValueObjects
 {
@@ -10,22 +10,22 @@ namespace QuickBuy.Dominio.ValueObjects
 
         public bool IsBoleto 
         {
-            get { return Id is (int)TipoFormaPagamentoEnum.Boleto; }
+            get { return Id is TipoFormaPagamento.Boleto; }
         }
 
         public bool IsCartaoCredito
         {
-            get { return Id is (int)TipoFormaPagamentoEnum.CartaoCredito; }
+            get { return Id is TipoFormaPagamento.CartaoCredito; }
         }
 
         public bool IsPix
         {
-            get { return Id is (int)TipoFormaPagamentoEnum.Pix; }
+            get { return Id is TipoFormaPagamento.Pix; }
         }
 
         public bool IsNaoDefinido
         {
-            get { return Id is (int)TipoFormaPagamentoEnum.NaoDefinido; }
+            get { return Id is TipoFormaPagamento.NaoDefinido; }
         }
     }
 }
