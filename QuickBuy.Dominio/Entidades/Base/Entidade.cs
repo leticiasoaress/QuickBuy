@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace QuickBuy.Dominio.Entidades
+namespace QuickBuy.Dominio.Entidades.Base
 {
     public abstract class Entidade
     {

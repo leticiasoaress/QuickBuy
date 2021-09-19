@@ -1,4 +1,6 @@
-﻿namespace QuickBuy.Dominio.Entidades
+﻿using QuickBuy.Dominio.Entidades.Base;
+
+namespace QuickBuy.Dominio.Entidades.Produtos
 {
     public class Produto : Entidade
     {

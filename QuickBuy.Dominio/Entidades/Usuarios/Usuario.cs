@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using QuickBuy.Dominio.Entidades.Base;
+using QuickBuy.Dominio.Entidades.Pedidos;
+using System.Collections.Generic;
 
-namespace QuickBuy.Dominio.Entidades
+namespace QuickBuy.Dominio.Entidades.Usuarios
 {
     public class Usuario : Entidade
     {

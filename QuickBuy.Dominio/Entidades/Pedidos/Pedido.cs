@@ -1,9 +1,10 @@
-﻿using QuickBuy.Dominio.ValueObjects;
+﻿using QuickBuy.Dominio.Entidades.Base;
+using QuickBuy.Dominio.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace QuickBuy.Dominio.Entidades
+namespace QuickBuy.Dominio.Entidades.Pedidos
 {
     public class Pedido : Entidade
     {
