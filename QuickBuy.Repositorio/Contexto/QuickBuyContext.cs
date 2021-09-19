@@ -14,7 +14,6 @@ namespace QuickBuy.Repositorio.Contexto
         public DbSet<Pedido> Pedido { get; set; }
         public DbSet<ItemPedido> ItemPedido { get; set; }
         public DbSet<FormaPagamento> FormaPagamento { get; set; }
-        public DbSet<Endereco> Endereco { get; set; }
 
         public QuickBuyContext(DbContextOptions options)
             : base(options)
@@ -28,7 +27,6 @@ namespace QuickBuy.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new PedidoConfiguration());
             modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
-            modelBuilder.ApplyConfiguration(new EnderecoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
