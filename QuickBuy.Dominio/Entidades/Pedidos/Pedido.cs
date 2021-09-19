@@ -18,10 +18,10 @@ namespace QuickBuy.Dominio.Entidades.Pedidos
         public string Logradouro { get; set; }
         public string Numero { get; set; }
 
-        public int IdUsuario { get; set; }
+        public int UsuarioId { get; set; }
         public virtual Usuario Usuario { get; set; }
 
-        public int IdFormaPagamento { get; set; }
+        public int FormaPagamentoId { get; set; }
         public virtual FormaPagamento FormaPagamento { get; set; }
 
         public virtual ICollection<ItemPedido> ItensPedido { get; set; }
@@ -33,7 +33,7 @@ namespace QuickBuy.Dominio.Entidades.Pedidos
                 AddError("Pedido não pode ficar sem itens.");
             }
 
-            if (IdFormaPagamento <= 0)
+            if (FormaPagamentoId <= 0)
             {
                 AddError("Pedido não pode ficar sem itens.");
             }

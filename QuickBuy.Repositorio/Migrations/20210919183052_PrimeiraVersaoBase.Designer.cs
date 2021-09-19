@@ -9,7 +9,7 @@ using QuickBuy.Repositorio.Contexto;
 namespace QuickBuy.Repositorio.Migrations
 {
     [DbContext(typeof(QuickBuyContext))]
-    [Migration("20210919180725_PrimeiraVersaoBase")]
+    [Migration("20210919183052_PrimeiraVersaoBase")]
     partial class PrimeiraVersaoBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,11 +58,7 @@ namespace QuickBuy.Repositorio.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<int?>("FormaPagamentoId");
-
-                    b.Property<int>("IdFormaPagamento");
-
-                    b.Property<int>("IdUsuario");
+                    b.Property<int>("FormaPagamentoId");
 
                     b.Property<string>("Logradouro")
                         .IsRequired()
@@ -72,7 +68,7 @@ namespace QuickBuy.Repositorio.Migrations
                         .IsRequired()
                         .HasMaxLength(10);
 
-                    b.Property<int?>("UsuarioId");
+                    b.Property<int>("UsuarioId");
 
                     b.HasKey("Id");
 
@@ -159,11 +155,13 @@ namespace QuickBuy.Repositorio.Migrations
                 {
                     b.HasOne("QuickBuy.Dominio.ValueObjects.FormaPagamento", "FormaPagamento")
                         .WithMany()
-                        .HasForeignKey("FormaPagamentoId");
+                        .HasForeignKey("FormaPagamentoId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("QuickBuy.Dominio.Entidades.Usuarios.Usuario", "Usuario")
                         .WithMany("Pedidos")
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

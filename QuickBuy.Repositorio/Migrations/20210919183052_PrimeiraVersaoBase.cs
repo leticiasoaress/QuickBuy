@@ -66,10 +66,8 @@ namespace QuickBuy.Repositorio.Migrations
                     Cidade = table.Column<string>(maxLength: 100, nullable: false),
                     Logradouro = table.Column<string>(maxLength: 100, nullable: false),
                     Numero = table.Column<string>(maxLength: 10, nullable: false),
-                    IdUsuario = table.Column<int>(nullable: false),
-                    UsuarioId = table.Column<int>(nullable: true),
-                    IdFormaPagamento = table.Column<int>(nullable: false),
-                    FormaPagamentoId = table.Column<int>(nullable: true)
+                    UsuarioId = table.Column<int>(nullable: false),
+                    FormaPagamentoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,13 +77,13 @@ namespace QuickBuy.Repositorio.Migrations
                         column: x => x.FormaPagamentoId,
                         principalTable: "FormaPagamento",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Pedido_Usuario_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuario",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
