@@ -11,3 +11,9 @@
 .vs/QuickBuy/v16/.suo
 QuickBuy.Repositorio/obj/Debug/netstandard2.0/QuickBuy.Repositorio.csproj.FileListAbsolute.txt
 .vs/QuickBuy/v16/.suo
+QuickBuy.Repositorio/obj
+QuickBuy.Repositorio/bin
+QuickBuy.Dominio/obj
+QuickBuy.Dominio/bin
+QuickBuy.Web/obj
+QuickBuy.Web/bin
