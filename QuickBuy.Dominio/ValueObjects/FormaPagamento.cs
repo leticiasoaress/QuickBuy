@@ -1,31 +1,32 @@
 ﻿using QuickBuy.Dominio.Constantes;
+using System.Collections.Generic;
 
 namespace QuickBuy.Dominio.ValueObjects
 {
     public class FormaPagamento
     {
+        private List<string> _errorMessages => _errorMessages ?? new List<string>();
+
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public bool IsBoleto 
-        {
-            get { return Id is TipoFormaPagamento.Boleto; }
-        }
+        public bool IsBoleto => Id is TipoFormaPagamento.Boleto;
+        public bool IsCartaoCredito => Id is TipoFormaPagamento.CartaoCredito;
+        public bool IsPix => Id is TipoFormaPagamento.Pix;
 
-        public bool IsCartaoCredito
+        public List<string> Validate()
         {
-            get { return Id is TipoFormaPagamento.CartaoCredito; }
-        }
+            if (Id <= 0)
+            {
+                _errorMessages.Add("Não foi informado a forma de pagamento.");
+            }
 
-        public bool IsPix
-        {
-            get { return Id is TipoFormaPagamento.Pix; }
-        }
-
-        public bool IsNaoDefinido
-        {
-            get { return Id is TipoFormaPagamento.NaoDefinido; }
+            if (!TipoFormaPagamento.Validos.Contains(Id))
+            {
+                _errorMessages.Add("Tipo de pagamento inválido.");
+            }
+            return _errorMessages;
         }
     }
 }
