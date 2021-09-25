@@ -1,44 +1,50 @@
 ﻿using QuickBuy.Dominio.Interface.Repositorio.Base;
-using System;
+using QuickBuy.Repositorio.Contexto;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace QuickBuy.Repositorio.Repositorios.Base
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-        public BaseRepositorio()
-        {
+        protected readonly QuickBuyContext Context;
 
+        public BaseRepositorio(QuickBuyContext context)
+        {
+            Context = context;
         }
 
         public void Adicionar(TEntity entity)
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().Add(entity);
+            Context.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().Update(entity);
+            Context.SaveChanges();
         }
 
         public void Excluir(TEntity entity)
         {
-            throw new NotImplementedException();
+            Context.Remove(entity);
+            Context.SaveChanges();
         }
 
         public TEntity ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return Context.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            throw new NotImplementedException();
+            return Context.Set<TEntity>().ToList();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Context.Dispose();
         }
     }
 }

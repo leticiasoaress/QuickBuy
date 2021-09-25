@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuickBuy.Dominio.Interface.Repositorio.Produtos;
 using QuickBuy.Repositorio.Contexto;
+using QuickBuy.Repositorio.Repositorios.Produtos;
 
 namespace QuickBuy.Web
 {
@@ -29,6 +31,9 @@ namespace QuickBuy.Web
                                                    option.UseLazyLoadingProxies()
                                                          .UseMySql(connectionString,
                                                                    m => m.MigrationsAssembly("QuickBuy.Repositorio")));
+
+            services.AddScoped<IProdutoRespositorio, ProdutoRepositorio>();
+
 
             services.AddSpaStaticFiles(configuration =>
             {
