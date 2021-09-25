@@ -13,13 +13,18 @@ namespace QuickBuy.Dominio.Entidades.Produtos
         {
             if (string.IsNullOrWhiteSpace(Nome))
             {
-                AddError("Nome do produto não foi informado.");
+                AddError("Nome do produto não foi informado");
             }
               
             if (string.IsNullOrWhiteSpace(Descricao))
             {
-                AddError("Descrição não foi informado.");
+                AddError("Descrição não foi informado");
             }
-        }
+
+            if (Preco <= 0)
+            {
+                AddError("Preço inválido");
+            }
+        }       
     }
 }

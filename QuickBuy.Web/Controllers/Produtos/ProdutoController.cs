@@ -42,10 +42,17 @@ namespace QuickBuy.Web.Controllers.Produtos
         [HttpPost]
         [ProducesResponseType(typeof(Produto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Post([FromBody]Produto produto)
         {
             try
             {
+                produto.Validate();
+                if (!produto.IsValid())
+                {
+                    return BadRequest(produto.GetErrorMessages());
+                }
+
                 _produtoRepositorio.Adicionar(produto);
                 return Created("api/produto", produto);
             }
